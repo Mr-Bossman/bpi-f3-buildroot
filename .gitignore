@@ -1,0 +1,3 @@
+board/bananapi/bananapi-f3/blobs/*
+!board/bananapi/bananapi-f3/blobs/u-boot-bpi-f3-512b.img
+!board/bananapi/bananapi-f3/blobs/u-boot-bpi-f3-header-sd-0k.img
