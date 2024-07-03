@@ -17,8 +17,12 @@ BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL)/board/bananapi/bananapi-f3/rootfs_overlay"
 
 # Image
 BR2_ROOTFS_POST_IMAGE_SCRIPT="support/scripts/genimage.sh"
-BR2_ROOTFS_POST_SCRIPT_ARGS="-c $(BR2_EXTERNAL)/board/bananapi/bananapi-f3/genimage.cfg"
 BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL)/board/bananapi/bananapi-f3/post-build.sh"
+
+# K1 needs initramfs and esos.eld for REMOTEPROC
+BR2_ROOTFS_POST_SCRIPT_ARGS="-c $(BR2_EXTERNAL)/board/bananapi/bananapi-f3/genimage.cfg"
+
+#BR2_ROOTFS_POST_SCRIPT_ARGS="-c $(BR2_EXTERNAL)/board/bananapi/bananapi-f3/remoteproc-genimage.cfg"
 
 # Linux headers same as kernel
 BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_6_1=y
@@ -33,6 +37,9 @@ BR2_LINUX_KERNEL_IMAGE_TARGET_CUSTOM=y
 BR2_LINUX_KERNEL_IMAGE_NAME="Image.itb"
 BR2_LINUX_KERNEL_DTS_SUPPORT=y
 BR2_LINUX_KERNEL_INTREE_DTS_NAME="spacemit/k1-x_deb1"
+
+# K1 needs initramfs and esos.eld for REMOTEPROC
+BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="$(BR2_EXTERNAL)/board/bananapi/bananapi-f3/no-remoteproc.config"
 
 # OpenSBI
 BR2_TARGET_OPENSBI=y
